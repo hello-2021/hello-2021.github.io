@@ -239,6 +239,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hello-2021.github.io/2024/08/16/tu_muban/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MemSite">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2024/08/16/tu_muban/" itemprop="url">图的表示和遍历 4道模板题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2024-08-16T16:55:33+08:00">
+                2024-08-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="879-图遍历【dfs】-1"><a href="#879-图遍历【dfs】-1" class="headerlink" title="#879. 图遍历【dfs】-1"></a>#879. 图遍历【dfs】-1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n,m;</span><br><span class="line">int mapp[5000][5000];</span><br><span class="line">bool visited[5000];</span><br><span class="line"></span><br><span class="line">void dfs(int x)&#123;</span><br><span class="line">	visited[x] = true;</span><br><span class="line">	printf(&quot;%d &quot;,x);</span><br><span class="line">	for(int i=1; i&lt;=n; i++)&#123;</span><br><span class="line">		if(!visited[i] &amp;&amp; mapp[x][i] &gt; 0) dfs(i);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	</span><br><span class="line">	for(int i=1; i&lt;=m; i++)&#123;</span><br><span class="line">		int from,to,dis;</span><br><span class="line">		scanf(&quot;%d%d%d&quot;,&amp;from,&amp;to,&amp;dis);</span><br><span class="line">		mapp[from][to] = dis;</span><br><span class="line">		mapp[to][from] = dis;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    dfs(1);</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br/>
+
+<h3 id="880-图遍历【dfs】-2"><a href="#880-图遍历【dfs】-2" class="headerlink" title="#880. 图遍历【dfs】-2"></a>#880. 图遍历【dfs】-2</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct edge&#123;</span><br><span class="line">	int to;</span><br><span class="line">	int next;</span><br><span class="line">	int dis;</span><br><span class="line">	edge()&#123;</span><br><span class="line">		to = 0;</span><br><span class="line">		next = 0;</span><br><span class="line">		dis = 0;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;edges[4000];</span><br><span class="line">int head[4000];</span><br><span class="line">bool visited[4000];</span><br><span class="line"></span><br><span class="line">int n,m;</span><br><span class="line">int edgenum=0;</span><br><span class="line"></span><br><span class="line">void addEdge(int from, int to, int dis)&#123;</span><br><span class="line">	edgenum++;</span><br><span class="line">	edges[edgenum].next = head[from];</span><br><span class="line">	edges[edgenum].to = to;</span><br><span class="line">	edges[edgenum].dis = dis;</span><br><span class="line">	head[from] = edgenum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void dfs(int x)&#123;</span><br><span class="line">	visited[x] = true;</span><br><span class="line">	</span><br><span class="line">	printf(&quot;%d &quot;,x);</span><br><span class="line">	</span><br><span class="line">	for(int i = head[x]; i != 0; i = edges[i].next)&#123;</span><br><span class="line">		if(!visited[edges[i].to]) dfs(edges[i].to);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	</span><br><span class="line">	for(int i=1; i&lt;=m; i++)&#123;</span><br><span class="line">		int from,to,dis;</span><br><span class="line">		scanf(&quot;%d%d%d&quot;,&amp;from,&amp;to,&amp;dis);</span><br><span class="line">		</span><br><span class="line">		addEdge(from,to,dis);</span><br><span class="line">		addEdge(to,from,dis);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	dfs(1);</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br/>
+
+<h3 id="881-图遍历【bfs】-1"><a href="#881-图遍历【bfs】-1" class="headerlink" title="#881. 图遍历【bfs】-1"></a>#881. 图遍历【bfs】-1</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int n,m;</span><br><span class="line">int mapp[5000][5000];</span><br><span class="line">bool visited[5000];</span><br><span class="line"></span><br><span class="line">queue&lt;int&gt; point;</span><br><span class="line"></span><br><span class="line">void bfs(int x)&#123;</span><br><span class="line">    visited[x] = true;</span><br><span class="line">    point.push(x);</span><br><span class="line">    </span><br><span class="line">    printf(&quot;%d &quot;,x);</span><br><span class="line">    </span><br><span class="line">    while(!point.empty())&#123;</span><br><span class="line">    	int t = point.front();</span><br><span class="line">    	point.pop();</span><br><span class="line">    	</span><br><span class="line">    	for(int i=1; i&lt;=n; i++)&#123;</span><br><span class="line">    		if(mapp[t][i] &gt; 0 &amp;&amp; !visited[i])&#123;</span><br><span class="line">    			visited[i] = true;    			</span><br><span class="line">    			point.push(i);</span><br><span class="line">				</span><br><span class="line">				printf(&quot;%d &quot;,i);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	</span><br><span class="line">	for(int i=1; i&lt;=m; i++)&#123;</span><br><span class="line">		int from,to,dis;</span><br><span class="line">		scanf(&quot;%d%d%d&quot;,&amp;from,&amp;to,&amp;dis);</span><br><span class="line">		mapp[from][to] = dis;</span><br><span class="line">		mapp[to][from] = dis;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    bfs(1);</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br/>
+
+<h3 id="882-图遍历【bfs】-2（无数据）"><a href="#882-图遍历【bfs】-2（无数据）" class="headerlink" title="#882. 图遍历【bfs】-2（无数据）"></a>#882. 图遍历【bfs】-2（无数据）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">struct edge&#123;</span><br><span class="line">	int to;</span><br><span class="line">	int next;</span><br><span class="line">	int dis;</span><br><span class="line">	edge()&#123;</span><br><span class="line">		to = 0;</span><br><span class="line">		next = 0;</span><br><span class="line">		dis = 0;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;edges[4000];</span><br><span class="line">int head[4000];</span><br><span class="line"></span><br><span class="line">queue&lt;int&gt; point;</span><br><span class="line">bool visited[4000];</span><br><span class="line"></span><br><span class="line">int n,m;</span><br><span class="line">int edgenum = 0;</span><br><span class="line"></span><br><span class="line">void addEdge(int from, int to, int dis)&#123;</span><br><span class="line">	edgenum++;</span><br><span class="line">	edges[edgenum].next = head[from];</span><br><span class="line">	edges[edgenum].to = to;</span><br><span class="line">	edges[edgenum].dis = dis;</span><br><span class="line">	head[from] = edgenum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void bfs(int x)&#123;</span><br><span class="line">	visited[x] = true;</span><br><span class="line">	point.push(x);</span><br><span class="line">	printf(&quot;%d &quot;,x);</span><br><span class="line">	</span><br><span class="line">	while(!point.empty())&#123;</span><br><span class="line">		int t = point.front();</span><br><span class="line">		point.pop();</span><br><span class="line">		</span><br><span class="line">		for(int i=head[t]; i!=0; i=edges[i].next)&#123;</span><br><span class="line">			if(!visited[edges[i].to])&#123;</span><br><span class="line">				visited[edges[i].to] = true;</span><br><span class="line">				point.push(edges[i].to);</span><br><span class="line">				printf(&quot;%d &quot;,edges[i].to);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">	</span><br><span class="line">	for(int i=1; i&lt;=m; i++)&#123;</span><br><span class="line">		int from,to,dis;</span><br><span class="line">		scanf(&quot;%d%d%d&quot;,&amp;from,&amp;to,&amp;dis);</span><br><span class="line">		addEdge(from,to,dis);</span><br><span class="line">		addEdge(to,from,dis);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	bfs(1);</span><br><span class="line">	</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hello-2021.github.io/2024/06/30/20240630m/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1222,7 +1350,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
